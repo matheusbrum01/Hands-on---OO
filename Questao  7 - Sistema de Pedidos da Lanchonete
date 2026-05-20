@@ -1,0 +1,120 @@
+public class Pedido {
+
+    int numero;
+    String cliente;
+    String item;
+    double valor;
+    String status;
+
+    public Pedido(int numero, String cliente, String item, double valor) {
+        this.numero = numero;
+        this.cliente = cliente;
+        this.item = item;
+        this.valor = valor;
+        this.status = "PENDENTE";
+    }
+}
+
+
+//Sistema da Lanchonete
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Lanchonete {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+
+        int opcao;
+
+        do {
+
+            System.out.println("\n1 - Novo Pedido");
+            System.out.println("2 - Listar Pedidos");
+            System.out.println("3 - Atualizar Status");
+            System.out.println("0 - Sair");
+
+            opcao = sc.nextInt();
+
+            switch (opcao) {
+
+                case 1:
+
+                    sc.nextLine();
+
+                    System.out.print("Número do pedido: ");
+                    int numero = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Cliente: ");
+                    String cliente = sc.nextLine();
+
+                    System.out.print("Item: ");
+                    String item = sc.nextLine();
+
+                    System.out.print("Valor: ");
+                    double valor = sc.nextDouble();
+
+                    pedidos.add(new Pedido(numero, cliente, item, valor));
+
+                    System.out.println("Pedido cadastrado!");
+                    break;
+
+                case 2:
+
+                    System.out.println("\nLista de Pedidos:");
+
+                    for (Pedido p : pedidos) {
+
+                        System.out.println(
+                                "Pedido: " + p.numero +
+                                " | Cliente: " + p.cliente +
+                                " | Item: " + p.item +
+                                " | Valor: R$" + p.valor +
+                                " | Status: " + p.status
+                        );
+                    }
+                    break;
+
+                case 3:
+
+                    System.out.print("Número do pedido: ");
+                    int numPedido = sc.nextInt();
+                    sc.nextLine();
+
+                    for (Pedido p : pedidos) {
+
+                        if (p.numero == numPedido) {
+
+                            System.out.println("1 - PREPARANDO");
+                            System.out.println("2 - FINALIZADO");
+
+                            int status = sc.nextInt();
+
+                            if (status == 1) {
+                                p.status = "PREPARANDO";
+                            } else if (status == 2) {
+                                p.status = "FINALIZADO";
+                            }
+
+                            System.out.println("Status atualizado!");
+                        }
+                    }
+                    break;
+
+                case 0:
+                    System.out.println("Sistema encerrado.");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida.");
+            }
+
+        } while (opcao != 0);
+
+        sc.close();
+    }
+}
