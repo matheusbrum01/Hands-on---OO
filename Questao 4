@@ -1,0 +1,34 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class CadastroAlunos {
+    public static void main(String[] args) {
+
+        HashMap<Integer, String> alunos = new HashMap<>();
+
+        // Cadastrar
+        alunos.put(101, "Ana");
+        alunos.put(102, "Bruno");
+        alunos.put(103, "Carlos");
+
+        // Buscar aluno
+        int matriculaBusca = 102;
+
+        if (alunos.containsKey(matriculaBusca)) {
+            System.out.println("Aluno encontrado: " + alunos.get(matriculaBusca));
+        } else {
+            System.out.println("Aluno não encontrado.");
+        }
+
+        // Remover aluno
+        alunos.remove(101);
+
+        // Mostrar todos
+        System.out.println("\nLista de alunos:");
+
+        for (Map.Entry<Integer, String> aluno : alunos.entrySet()) {
+            System.out.println("Matrícula: " + aluno.getKey() +
+                    " | Nome: " + aluno.getValue());
+        }
+    }
+}
