@@ -1,0 +1,22 @@
+import java.util.HashSet;
+
+public class PresencaAlunos {
+    public static void main(String[] args) {
+
+        HashSet<String> alunos = new HashSet<>();
+
+        alunos.add("Carlos");
+        alunos.add("Maria");
+        alunos.add("João");
+        alunos.add("Carlos");
+        alunos.add("Maria");
+
+        System.out.println("Lista sem repetição:");
+
+        for (String aluno : alunos) {
+            System.out.println(aluno);
+        }
+
+        System.out.println("Quantidade de alunos presentes: " + alunos.size());
+    }
+}
